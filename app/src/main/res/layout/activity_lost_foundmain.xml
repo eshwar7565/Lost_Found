@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Cornsilk"
+    tools:context=".LostFoundmainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:id="@+id/postforlost"
+            android:text="POST FOR LOST"
+            />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="140dp"
+            android:id="@+id/postforfound"
+            android:text="POST FOR FOUND"
+            />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:id="@+id/checkforlost"
+            android:text="CHECK FOR LOST"/>
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="280dp"
+            android:id="@+id/checkforfound"
+            android:text="CHECK FOR FOUND"/>
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
+            android:id="@+id/openposts"
+            android:text="MY POSTS"
+
+            />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="630dp"
+            android:text="UPDATE PASSWORD"
+            android:id="@+id/updatehangepassword"
+            />
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

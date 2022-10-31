@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/Linen">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewloginhead"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:text="Hello IITP User Login with your registered credidentials"
+           android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewUsername"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/textviewloginhead"
+                android:text="Email*"
+                android:textSize="20dp"
+                android:textColor="#555555"
+                />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/texteditusername"
+            android:layout_below="@id/textviewUsername"
+            android:hint="Enter Email Address"
+            android:padding="6dp"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_password"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/texteditusername"
+            android:text="Password*"
+            android:textSize="20dp"
+            android:textColor="#555555"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edittextpassword"
+            android:layout_below="@id/text_view_password"
+            android:hint="Enter Password"
+            android:padding="6dp"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:background="@drawable/border"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/edittextpassword"
+            android:layout_marginTop="30dp"
+            android:text="LOGIN"
+            android:id="@+id/login_main_button"
+/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="10dp"
+            android:id="@+id/progressbarinloginactivity"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/frgtpswd"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_main_button"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="58dp"
+            android:layout_marginLeft="0dp"
+            android:text="Forgot Password?"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frgtpswd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-36dp"
+            android:textSize="10dp"
+
+            android:text="CLICK HERE" />
+
+
+    </RelativeLayout>
+
+
+
+
+</ScrollView>

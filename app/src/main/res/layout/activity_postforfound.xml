@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".postforfound"
+    android:background="@color/FloralWhite">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
+        android:layout_margin="25dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/Name_in_post_for_found"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Name_in_post_for_found"
+            android:id="@+id/edit_text_name_postforfound"
+            android:background="@drawable/border"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_text_name_postforfound"
+            android:text="Phone :"
+            android:id="@+id/view_text_phone_number_post_for_found"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_text_phone_number_post_for_found"
+            android:id="@+id/edit_text_phone_post_for_found"
+            android:background="@drawable/border"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location :"
+            android:id="@+id/view_location_postforfound"
+            android:layout_below="@+id/edit_text_phone_post_for_found"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_location_postforfound"
+            android:id="@+id/edit_location_post_for_found"
+            android:background="@drawable/border"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Message  * "
+            android:id="@+id/view_message_post_for_found"
+            android:textStyle="bold"
+            android:layout_below="@id/edit_location_post_for_found"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/view_message_post_for_found"
+            android:background="@drawable/border"
+            android:id="@+id/edit_message_post_for_found"
+            />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:layout_below="@id/edit_message_post_for_found"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

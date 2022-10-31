@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "958240233243",
+    "project_id": "login-register-efdb7",
+    "storage_bucket": "login-register-efdb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958240233243:android:343b3eeab3b62ac0c4e5be",
+        "android_client_info": {
+          "package_name": "eshwar.user.loginregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958240233243-hmirlte3l2bj27ra0umq0usidlsjeuha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eshwar.user.loginregister",
+            "certificate_hash": "7a0049ad440c365676efe058750fcbba95fa8e1b"
+          }
+        },
+        {
+          "client_id": "958240233243-kvlj05voqudpuo5lqnaanfqglvrgle9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdex5AaBP60sCv6T9wV_9pAq0viHBRRI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958240233243-kvlj05voqudpuo5lqnaanfqglvrgle9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
