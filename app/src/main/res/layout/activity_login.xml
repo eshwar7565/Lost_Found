@@ -106,7 +106,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="-36dp"
             android:textSize="10dp"
-
+            android:id="@+id/clickhere_for_forgot"
             android:text="CLICK HERE" />
 
 

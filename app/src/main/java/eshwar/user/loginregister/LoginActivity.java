@@ -25,7 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText editTextLoginEmail,editTextLoginPassword;
+    private EditText editTextLoginEmail, editTextLoginPassword;
+
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
     private static final String TAG = "Login Activity";
@@ -37,36 +38,43 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().setTitle("LOGIN");
         editTextLoginEmail = findViewById(R.id.texteditusername);
-        editTextLoginPassword =findViewById(R.id.edittextpassword);
+        editTextLoginPassword = findViewById(R.id.edittextpassword);
         progressBar = findViewById(R.id.progressbarinloginactivity);
 
 
+
         authProfile = FirebaseAuth.getInstance();
+
+        Button buttonForgotPassword = findViewById(R.id.clickhere_for_forgot);
+        buttonForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "You can reset your password now!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this,ForgotpasswordActivity.class));
+            }
+        });
         Button buttonLogin = findViewById(R.id.login_main_button);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String textEmail = editTextLoginEmail.getText().toString();
                 String textPassword = editTextLoginPassword.getText().toString();
-                if(TextUtils.isEmpty(textEmail)){
-                    Toast.makeText(LoginActivity.this,"Please enter your email",Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(textEmail)) {
+                    Toast.makeText(LoginActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
                     editTextLoginEmail.setError("Email is Required");
                     editTextLoginEmail.requestFocus();
-                }
-                else if(!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
                     Toast.makeText(LoginActivity.this, "Please re - enter your email ", Toast.LENGTH_SHORT).show();
                     editTextLoginEmail.setError("Valid Email is Required");
                     editTextLoginEmail.requestFocus();
 
-                }
-                else if(TextUtils.isEmpty(textPassword)){
+                } else if (TextUtils.isEmpty(textPassword)) {
                     Toast.makeText(LoginActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
                     editTextLoginPassword.setError("Password is required");
                     editTextLoginPassword.requestFocus();
-                }
-                else{
+                } else {
                     progressBar.setVisibility(View.VISIBLE);
-                   loginuser(textEmail,textPassword);
+                    loginuser(textEmail, textPassword);
 
                 }
             }
@@ -76,31 +84,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginuser(String username, String password) {
-        authProfile.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        authProfile.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
 
 
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
-                    if(firebaseUser.isEmailVerified()){
+                    if (firebaseUser.isEmailVerified()) {
                         Toast.makeText(LoginActivity.this, "You are Logged in", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this,LostFoundmainActivity.class);
+                        startActivity(intent);
 
 
-                    }
-                    else{
+                    } else {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();
                         showAlertDialogue();
                     }
-                }else{
-                    try{
+                } else {
+                    try {
                         throw task.getException();
-                    }catch(FirebaseAuthInvalidCredentialsException e ){
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
                         editTextLoginEmail.setError("Please verify the email address");
                         editTextLoginEmail.requestFocus();
-                    } catch (Exception e){
-                        Log.e(TAG,e.getMessage());
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
@@ -118,13 +127,12 @@ public class LoginActivity extends AppCompatActivity {
         builder.setMessage("Please verify your email now.You cannot login without email verification.");
 
 
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
 
-    protected void onStart() {
+  /*  protected void onStart() {
         super.onStart();
         if(authProfile.getCurrentUser()!=null){
             Toast.makeText(LoginActivity.this, "Already logged-in", Toast.LENGTH_SHORT).show();
@@ -137,5 +145,5 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Toast.makeText(LoginActivity.this, "You can login now!", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }
