@@ -38,13 +38,13 @@ public class postlostmain extends AppCompatActivity {
          Button buttonaddimagelost = findViewById(R.id.addimagebuttonlost);
 
 
-         buttonaddimagelost.setOnClickListener(new View.OnClickListener() {
+        /* buttonaddimagelost.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  Intent intent = new Intent(postlostmain.this,addimagepostlost.class);
                  startActivity(intent);
              }
-         });
+         });*/
 
 
 
