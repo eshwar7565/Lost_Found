@@ -39,7 +39,7 @@ public class register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setTitle("REGISTER");
         progressBar = findViewById(R.id.loading);
 
         Toast.makeText(register.this, "You can register now", Toast.LENGTH_SHORT).show();
@@ -136,27 +136,28 @@ public class register extends AppCompatActivity {
 
     }
     // Register user using the given credits
-    private <textEmail> void registerUser(String textFullName, String textRollNo, String textEmail, String textPassword, String textConfirmPassword, String textPhoneNumber) {
+    private void registerUser(String textFullName, String textRollNo, String textEmail, String textPassword, String textConfirmPassword, String textPhoneNumber) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                    progressBar.setVisibility(View.GONE);
+
                     FirebaseUser firebaseUser = auth.getCurrentUser();
                     firebaseUser.sendEmailVerification();
-                    Toast.makeText(register.this, "User registered Successfully.Please Verify and Login.", Toast.LENGTH_LONG).show();
-                    //
+                    Toast.makeText(register.this, "User registered Successfully.Please Verify.", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(register.this,MainActivity.class);
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|
                             Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     progressBar.setVisibility(View.GONE);
-                    finish();
 
-                  /*  ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber);
+
+
+                 /*   ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber);
+
 
                     DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered Users");
 
@@ -167,15 +168,9 @@ public class register extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
 
-                                Toast.makeText(register.this, "User registered Successfully.Please Verify.", Toast.LENGTH_LONG).show();
 
 
-                                Intent intent = new Intent(register.this,MainActivity.class);
 
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|
-                                        Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                progressBar.setVisibility(View.GONE);
 
                                 //to close register activity
                             }

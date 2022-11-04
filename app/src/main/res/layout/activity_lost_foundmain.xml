@@ -54,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="630dp"
             android:text="UPDATE PASSWORD"
-            android:id="@+id/updatehangepassword"
+            android:id="@+id/updateorchangepassword"
             />
 
 

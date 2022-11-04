@@ -23,6 +23,18 @@ public class LostFoundmainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("LOST & FOUND");
 
 
+        Button buttonforchangepassword = findViewById(R.id.updateorchangepassword);
+        buttonforchangepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LostFoundmainActivity.this,changepasswordactivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
         // Open postlost activity
         Button buttonpostforlost = findViewById(R.id.postforlost);
         buttonpostforlost.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +45,7 @@ public class LostFoundmainActivity extends AppCompatActivity {
             }
         });
 
-        //Open postfoud Activity
+        //Open postfound Activity
 
         Button buttonforfound = findViewById(R.id.postforfound);
         buttonforfound.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +70,7 @@ public class LostFoundmainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.menulogout){
             authProfile.signOut();
+
             Toast.makeText(LostFoundmainActivity.this, "Logged Out ", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LostFoundmainActivity.this,MainActivity.class);
 

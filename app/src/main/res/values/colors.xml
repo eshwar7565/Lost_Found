@@ -37,4 +37,6 @@
     <color name="GhostWhite">#F8F8FF</color>
     <color name="MintCream">#F5FFFA</color>
     <color name="WhiteSmoke">#F5F5F5</color>
+    <color name="greendark">#00ff00</color>
+    <color name="greenlight">#009900</color>
 </resources>

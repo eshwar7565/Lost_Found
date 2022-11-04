@@ -108,7 +108,12 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         editTextLoginEmail.setError("Please verify the email address");
                         editTextLoginEmail.requestFocus();
-                    } catch (Exception e) {
+                        editTextLoginPassword.setError("Please enter the correct password");
+                        editTextLoginPassword.requestFocus();
+
+
+                    }
+                    catch (Exception e) {
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -132,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-  /*  protected void onStart() {
+    protected void onStart() {
         super.onStart();
         if(authProfile.getCurrentUser()!=null){
             Toast.makeText(LoginActivity.this, "Already logged-in", Toast.LENGTH_SHORT).show();
@@ -145,5 +150,5 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Toast.makeText(LoginActivity.this, "You can login now!", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 }

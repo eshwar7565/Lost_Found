@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +17,15 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class ForgotpasswordActivity extends AppCompatActivity {
     private Button buttonresetpassword;
     private EditText editTextPwdresetemail;
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
+    private final static String TAG = "ForgotPasswordActivity";
+
 
 
     @Override
@@ -67,6 +71,17 @@ public class ForgotpasswordActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
+                }
+                else{
+                    try{
+                        throw task.getException();
+
+                    }catch(FirebaseAuthInvalidUserException e){
+                        editTextPwdresetemail.setError("User doesn't exist.Please register first.");
+                    }catch (Exception e){
+                       Log.e(TAG, e.getMessage());
+                        Toast.makeText(ForgotpasswordActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
             }
