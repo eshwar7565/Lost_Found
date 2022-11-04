@@ -146,7 +146,7 @@ public class register extends AppCompatActivity {
 
                     FirebaseUser firebaseUser = auth.getCurrentUser();
                     firebaseUser.sendEmailVerification();
-                    Toast.makeText(register.this, "User registered Successfully.Please Verify.", Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(register.this,MainActivity.class);
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|
@@ -156,7 +156,7 @@ public class register extends AppCompatActivity {
 
 
 
-                 /*   ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber);
+                    ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber);
 
 
                     DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered Users");
@@ -166,11 +166,6 @@ public class register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             // Send verification Email
                             if (task.isSuccessful()) {
-
-
-
-
-
 
                                 //to close register activity
                             }
@@ -182,7 +177,7 @@ public class register extends AppCompatActivity {
                         }
                     });
 
-*/
+
 
                 }
                 else{

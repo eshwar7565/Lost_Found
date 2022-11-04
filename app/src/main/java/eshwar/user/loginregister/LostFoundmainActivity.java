@@ -72,7 +72,7 @@ public class LostFoundmainActivity extends AppCompatActivity {
             authProfile.signOut();
 
             Toast.makeText(LostFoundmainActivity.this, "Logged Out ", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LostFoundmainActivity.this,MainActivity.class);
+            Intent intent = new Intent(LostFoundmainActivity.this,LoginActivity.class);
 
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
