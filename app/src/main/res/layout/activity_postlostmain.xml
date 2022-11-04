@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:text="SUBMIT"
             android:layout_below="@id/addimagebuttonlost"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="280dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/submitlost"/>
 
