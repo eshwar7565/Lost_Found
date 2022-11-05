@@ -70,6 +70,7 @@ public class postlostmain extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
 
         postlostref = FirebaseDatabase.getInstance().getReference().child("Postsinlostsection");
+
         authProfile = FirebaseAuth.getInstance();
         current_user_id =  authProfile.getCurrentUser().getUid();
 
@@ -152,8 +153,8 @@ public class postlostmain extends AppCompatActivity {
     private void ValidatePostLost() {
         String phonelost = phonenumberlost.getText().toString();
         String namelost = namepostlost.getText().toString();
-        String locationlost = locationpostlost.getText().toString();
-        String  messagelost =  messagepostlost.getText().toString();
+         locationlost = locationpostlost.getText().toString();
+        messagelost =  messagepostlost.getText().toString();
         if(imageUris == null ){
             Toast.makeText(postlostmain.this, "Please select an image ", Toast.LENGTH_SHORT).show();
         }
@@ -186,7 +187,7 @@ public class postlostmain extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
         saveCurrentTime = currentTime.format(calForTime.getTime());
 
-        Postlostname =  current_user_id ;
+        Postlostname = current_user_id+  saveCurrentDate + saveCurrentTime  ;
 
         StorageReference ImagelostFolder = FirebaseStorage.getInstance().getReference().child("Lost_Items");
 
@@ -224,16 +225,20 @@ public class postlostmain extends AppCompatActivity {
                     String phonelost = snapshot.child("PhoneNumber").getValue().toString();
                     String emaillost = snapshot.child("Email").getValue().toString();
 
+
                     HashMap postlostMap = new HashMap();
                     postlostMap.put("date",saveCurrentDate);
                     postlostMap.put("emaillost",emaillost);
+                    postlostMap.put("Imagelink",url);
+
                     postlostMap.put("time",saveCurrentTime);
                     postlostMap.put("uid",current_user_id);
                     postlostMap.put("FullName",namelost);
+                    postlostMap.put("Location",locationlost);
                     postlostMap.put("PhoneNumber",phonelost);
-                    postlostMap.put("messagelost",messagelost);
+                    postlostMap.put("Message",messagelost);
 
-                    postlostref.child(Postlostname).updateChildren(postlostMap).addOnCompleteListener(new OnCompleteListener() {
+                    databaseReference.child(Postlostname).updateChildren(postlostMap).addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
                             if(task.isSuccessful()){
@@ -263,10 +268,9 @@ public class postlostmain extends AppCompatActivity {
 
             }
         });
-        HashMap<String,String> hashMap = new HashMap<>();
-        hashMap.put("Imagelink",url);
 
-        databaseReference.push().setValue(hashMap);
+
+
 
 
     }

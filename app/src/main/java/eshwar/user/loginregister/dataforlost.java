@@ -10,5 +10,7 @@ public class dataforlost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataforlost);
+        getSupportActionBar().setTitle("LOST ITEMS DATA");
+
     }
 }

@@ -55,6 +55,23 @@ public class LostFoundmainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Button checkforlost = findViewById(R.id.checkforlost);
+
+
+
+
+        checkforlost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LostFoundmainActivity.this,dataforlost.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     @Override
