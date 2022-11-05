@@ -15,10 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,11 +48,12 @@ public class postlostmain extends AppCompatActivity {
     private String locationlost;
     private String namelost,current_user_id;
     private String messagelost;
-    private String saveCurrentDate,saveCurrentTime ,Postlostrandomname;
+    private String saveCurrentDate,saveCurrentTime ,Postlostname;
     private StorageReference PostlostReference;
-    private  DatabaseReference reference;
+    private  DatabaseReference reference,postlostref;
     private int upload_count =0 ;
     private FirebaseAuth authProfile;
+    private ProgressBar progressBar;
 
 
 
@@ -64,6 +68,8 @@ public class postlostmain extends AppCompatActivity {
 
         PostlostReference = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
+
+        postlostref = FirebaseDatabase.getInstance().getReference().child("Postsinlostsection");
         authProfile = FirebaseAuth.getInstance();
         current_user_id =  authProfile.getCurrentUser().getUid();
 
@@ -73,6 +79,10 @@ public class postlostmain extends AppCompatActivity {
          phonenumberlost = findViewById(R.id.edit_text_phone_post_for_lost);
          locationpostlost = findViewById(R.id.edit_location_post_for_lost);
          messagepostlost = findViewById(R.id.edit_message_post_for_lost);
+
+         progressBar = findViewById(R.id.progressbarforpostinglostitems);
+
+
 
          imageIS = findViewById(R.id.imageswitcherpostlost);
 
@@ -120,7 +130,10 @@ public class postlostmain extends AppCompatActivity {
          submitlost.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+
                  ValidatePostLost();
+                 progressBar.setVisibility(View.VISIBLE);
+
              }
          });
 
@@ -173,13 +186,13 @@ public class postlostmain extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
         saveCurrentTime = currentTime.format(calForTime.getTime());
 
-        Postlostrandomname = saveCurrentDate+saveCurrentTime;
+        Postlostname =  current_user_id ;
 
         StorageReference ImagelostFolder = FirebaseStorage.getInstance().getReference().child("Lost_Items");
 
        for(int j =0 ; j < imageUris.size() ; j++){
            Uri IndividualImage = imageUris.get(j);
-         StorageReference ImageName  = ImagelostFolder.child("Image" + IndividualImage.getLastPathSegment());
+         StorageReference ImageName  = ImagelostFolder.child("Image" + IndividualImage.getLastPathSegment() + Postlostname );
           ImageName.putFile(IndividualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
               @Override
               public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -206,7 +219,42 @@ public class postlostmain extends AppCompatActivity {
         reference.child(current_user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
+                if(snapshot.exists()){
+                    String namelost = snapshot.child("FullName").getValue().toString();
+                    String phonelost = snapshot.child("PhoneNumber").getValue().toString();
+                    String emaillost = snapshot.child("Email").getValue().toString();
+
+                    HashMap postlostMap = new HashMap();
+                    postlostMap.put("date",saveCurrentDate);
+                    postlostMap.put("emaillost",emaillost);
+                    postlostMap.put("time",saveCurrentTime);
+                    postlostMap.put("uid",current_user_id);
+                    postlostMap.put("FullName",namelost);
+                    postlostMap.put("PhoneNumber",phonelost);
+                    postlostMap.put("messagelost",messagelost);
+
+                    postlostref.child(Postlostname).updateChildren(postlostMap).addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if(task.isSuccessful()){
+
+                                sendusertopostlostmainactivity();
+                                progressBar.setVisibility(View.GONE);
+
+
+                                Toast.makeText(postlostmain.this, "Post is updated succesfully ", Toast.LENGTH_SHORT).show();
+
+                            }
+                            else{
+                                Toast.makeText(postlostmain.this, "Error occured while updating your post", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
+
+
+
+                }
 
             }
 
@@ -220,6 +268,13 @@ public class postlostmain extends AppCompatActivity {
 
         databaseReference.push().setValue(hashMap);
 
+
+    }
+
+    private void sendusertopostlostmainactivity() {
+
+        Intent intent = new Intent(postlostmain.this,LostFoundmainActivity.class);
+        startActivity(intent);
 
     }
 

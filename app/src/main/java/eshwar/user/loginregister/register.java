@@ -156,7 +156,7 @@ public class register extends AppCompatActivity {
 
 
 
-                    ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber);
+                    ReadWriteUserDetails writeUserDetails =new ReadWriteUserDetails(textFullName,textRollNo,textPhoneNumber,textEmail);
 
 
                     DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered Users");
