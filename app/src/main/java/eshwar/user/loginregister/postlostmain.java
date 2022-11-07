@@ -3,13 +3,16 @@ package eshwar.user.loginregister;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,8 +41,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class postlostmain extends AppCompatActivity {
+
+
    private ImageSwitcher imageIS;
     private Button addimagelost,submitlost,nextinlost,previousinlost;
     private EditText  namepostlost,phonenumberlost,locationpostlost,messagepostlost;
@@ -51,13 +59,9 @@ public class postlostmain extends AppCompatActivity {
     private String saveCurrentDate,saveCurrentTime ,Postlostname;
     private StorageReference PostlostReference;
     private  DatabaseReference reference,postlostref;
-    private int upload_count =0 ;
+
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
-
-
-
-
 
 
     @Override
@@ -69,7 +73,7 @@ public class postlostmain extends AppCompatActivity {
         PostlostReference = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
 
-        postlostref = FirebaseDatabase.getInstance().getReference().child("Postsinlostsection");
+
 
         authProfile = FirebaseAuth.getInstance();
         current_user_id =  authProfile.getCurrentUser().getUid();
@@ -89,6 +93,8 @@ public class postlostmain extends AppCompatActivity {
 
          nextinlost = findViewById(R.id.nextinpostlost);
          previousinlost = findViewById(R.id.previousinppostlost);
+
+
 
          imageUris = new ArrayList<>();
          imageIS.setFactory(new ViewSwitcher.ViewFactory() {
@@ -189,7 +195,7 @@ public class postlostmain extends AppCompatActivity {
 
         Postlostname = current_user_id+  saveCurrentDate + saveCurrentTime  ;
 
-        StorageReference ImagelostFolder = FirebaseStorage.getInstance().getReference().child("Lost_Items");
+        StorageReference ImagelostFolder = FirebaseStorage.getInstance().getReference().child("LostItems");
 
        for(int j =0 ; j < imageUris.size() ; j++){
            Uri IndividualImage = imageUris.get(j);
@@ -213,10 +219,15 @@ public class postlostmain extends AppCompatActivity {
 
 
 
+
+
+
     }
 
+
+
     private void StoreLink(String url) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Lost Items");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("LostItems");
         reference.child(current_user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -230,6 +241,9 @@ public class postlostmain extends AppCompatActivity {
                     postlostMap.put("date",saveCurrentDate);
                     postlostMap.put("emaillost",emaillost);
                     postlostMap.put("Imagelink",url);
+
+
+
 
                     postlostMap.put("time",saveCurrentTime);
                     postlostMap.put("uid",current_user_id);
@@ -268,9 +282,6 @@ public class postlostmain extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }

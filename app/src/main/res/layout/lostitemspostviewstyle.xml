@@ -1,117 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/white"
     android:layout_height="wrap_content"
     tools:context=".dataforlost">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
+            android:padding="5dp"
+            android:orientation="horizontal"
             >
-
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_person"
+                android:padding="2dp"
+                android:id="@+id/checklostprofileimage"
+                android:layout_marginLeft="4dp"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:padding="5dp"
-                android:orientation="horizontal"
-                >
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_person"
-                    android:padding="2dp"
-                    android:id="@+id/checklostprofileimage"
-                    android:layout_marginLeft="4dp"
-                    />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:id="@+id/checklostusername"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:textAlignment="textStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:autoLink="all"/>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:padding="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="has posted"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:id="@+id/justsimpletext"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:id="@+id/checklostdate"/>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Username"
-                        android:id="@+id/checklostusername"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="8dp"
-                        android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:text="Time"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/black"/>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/checklosttime"/>
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="5dp"
-                        android:padding="2dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="has posted"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:id="@+id/justsimpletext"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Date"
-                            android:layout_marginLeft="3dp"
-                            android:textColor="@android:color/black"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:id="@+id/checklostdate"/>
+                        android:id="@+id/locationlost"
+                        android:text="Location"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="3dp"
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Time"
-                            android:layout_marginLeft="3dp"
-                            android:textColor="@android:color/black"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:id="@+id/checklosttime"/>
+                        />
 
 
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
+        </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lost Message"
-                android:id="@+id/post_lost_message"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:padding="3dp"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                />
 
-            <ImageSwitcher
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lost Message"
+            android:id="@+id/check_lost_message"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:padding="3dp"
+            android:textSize="14sp"
+            android:autoLink="all"
+            android:textColor="@color/black"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/checklostimageviewIv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/checklostimageswitcher"
-                android:layout_margin="10dp"/>
+                android:layout_height="120dp"
+                android:layout_margin="25dp" />
 
 
 
@@ -119,9 +138,19 @@
 
 
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I FOUND IT "
+            android:textStyle="bold"
+            android:layout_marginLeft="133dp"
+            android:id="@+id/Ifounditbutton"/>
 
-    </RelativeLayout>
 
 
 
-</ScrollView>
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
