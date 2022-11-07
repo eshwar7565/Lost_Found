@@ -18,6 +18,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:id="@+id/list_root"
         >
 
         <LinearLayout
@@ -87,17 +88,7 @@
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:id="@+id/checklosttime"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/locationlost"
-                        android:text="Location"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="3dp"
 
-                        />
 
 
 
@@ -106,6 +97,19 @@
             </LinearLayout>
 
         </LinearLayout>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:id="@+id/locationlost"
+            android:text="Location"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="3dp"
+
+            />
+
+
+
 
 
         <TextView

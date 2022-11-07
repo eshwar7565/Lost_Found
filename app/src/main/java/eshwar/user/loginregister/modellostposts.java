@@ -3,7 +3,10 @@ package eshwar.user.loginregister;
 public class modellostposts {
 
 
-    String FullName , Imagelink , Location,Message , date ,time ,uid ;
+    public static String FullName , Imagelink , Location,Message , date ,time ,uid;
+
+
+
     public modellostposts(){
 
     }
@@ -18,7 +21,7 @@ public class modellostposts {
         this.uid = uid;
     }
 
-    public String getFullName() {
+    public static String getFullName() {
         return FullName;
     }
 
@@ -26,15 +29,16 @@ public class modellostposts {
         FullName = fullName;
     }
 
-    public String getImagelink() {
-        return Imagelink;
+    public static String getImagelink() {
+        return
+                Imagelink;
     }
 
     public void setImagelink(String imagelink) {
         Imagelink = imagelink;
     }
 
-    public String getLocation() {
+    public  static String getLocation() {
         return Location;
     }
 
@@ -42,7 +46,7 @@ public class modellostposts {
         Location = location;
     }
 
-    public String getMessage() {
+    public static String getMessage() {
         return Message;
     }
 
@@ -50,7 +54,7 @@ public class modellostposts {
         Message = message;
     }
 
-    public String getDate() {
+    public static String getDate() {
         return date;
     }
 
@@ -58,7 +62,7 @@ public class modellostposts {
         this.date = date;
     }
 
-    public String getTime() {
+    public  static String getTime() {
         return time;
     }
 
@@ -66,7 +70,7 @@ public class modellostposts {
         this.time = time;
     }
 
-    public String getUid() {
+    public static String getUid() {
         return uid;
     }
 
