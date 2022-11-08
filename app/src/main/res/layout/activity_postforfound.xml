@@ -14,60 +14,27 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name : "
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:id="@+id/Name_in_post_for_found"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Name_in_post_for_found"
-            android:id="@+id/edit_text_name_postforfound"
-            android:background="@drawable/border"
+            android:text="Found Something.Please let us know what you have found and where."
+            android:id="@+id/Welcomemessagetuserinfoundsection"
+            android:autoSizeTextType="uniform"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            />
 
-            />
+
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_text_name_postforfound"
-            android:text="Phone :"
-            android:id="@+id/view_text_phone_number_post_for_found"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/view_text_phone_number_post_for_found"
-            android:id="@+id/edit_text_phone_post_for_found"
-            android:background="@drawable/border"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Location :"
-            android:id="@+id/view_location_postforfound"
-            android:layout_below="@+id/edit_text_phone_post_for_found"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/view_location_postforfound"
-            android:id="@+id/edit_location_post_for_found"
-            android:background="@drawable/border"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Message  * "
+            android:text="Message*  : "
             android:id="@+id/view_message_post_for_found"
+            android:layout_below="@id/Welcomemessagetuserinfoundsection"
             android:textStyle="bold"
-            android:layout_below="@id/edit_location_post_for_found"
+            android:textColor="@android:color/darker_gray"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
             />
@@ -77,22 +44,82 @@
             android:layout_below="@id/view_message_post_for_found"
             android:background="@drawable/border"
             android:id="@+id/edit_message_post_for_found"
+            android:hint="Message to convey"
             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_message_post_for_found"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="ADD IMAGE"
+            android:id="@+id/addimagebuttonfound"
+            />
+        <ImageSwitcher
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/addimagebuttonfound"
+            android:id="@+id/imageswitcherpostfound"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"/>
 
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageswitcherpostfound"
+            android:text="PREVIOUS"
+            android:id="@+id/previousinppostfound"
+            />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/imageswitcherpostfound"
+            android:text="NEXT"
+            android:id="@+id/nextinpostfound"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/addimagebuttonfound"
+            android:text="(5 max)"
+            android:layout_below="@id/edit_message_post_for_found"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            />
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
-            android:layout_below="@id/edit_message_post_for_found"
-            android:layout_marginTop="150dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/addimagebuttonfound"
+            android:layout_marginTop="280dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/submitfound"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:id="@+id/progressbarforpostingfounditems"
+            />
 
-
-
-
-
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_gallery"
+            android:layout_below="@+id/edit_message_post_for_found"
+            android:layout_marginTop="38dp"
+            android:layout_toLeftOf="@id/addimagebuttonfound"
+            android:padding="6dp"/>
 
 
 

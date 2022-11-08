@@ -1,6 +1,6 @@
 package eshwar.user.loginregister;
 
-public class modellostposts {
+public class modelfoundposts {
 
 
     public static String FullName  ,Message ,Imagelink, date ,time ,uid;
@@ -10,7 +10,7 @@ public class modellostposts {
 
 
 
-    public modellostposts(String fullName, String message, String date, String time, String imagelink) {
+    public modelfoundposts(String fullName, String message, String date, String time, String imagelink) {
         this.FullName = fullName;
         this.Imagelink = imagelink;
 

@@ -8,7 +8,7 @@
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/white"
     android:layout_height="wrap_content"
-    tools:context=".dataforlost">
+    tools:context=".dataforfound">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/list_root"
+        android:id="@+id/list_root_found"
         >
 
         <LinearLayout
@@ -33,7 +33,7 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_person"
                 android:padding="2dp"
-                android:id="@+id/checklostprofileimage"
+                android:id="@+id/checkfoundprofileimage"
                 android:layout_marginLeft="4dp"
                 />
             <LinearLayout
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Username"
-                    android:id="@+id/checklostusername"
+                    android:id="@+id/checkfoundusername"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
                     android:textAlignment="textStart"
@@ -77,7 +77,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:id="@+id/checklostdate"/>
+                        android:id="@+id/checkfounddate"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:id="@+id/checklosttime"/>
+                        android:id="@+id/checkfoundtime"/>
 
 
 
@@ -106,8 +106,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lost Message"
-            android:id="@+id/check_lost_message"
+            android:text="Found Message"
+            android:id="@+id/check_found_message"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:padding="3dp"
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/checklostimageviewIv"
+                android:id="@+id/checkfoundimageviewIv"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_margin="25dp" />
@@ -136,10 +136,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I FOUND IT "
+            android:text="CLAIM"
             android:textStyle="bold"
             android:layout_marginLeft="133dp"
-            android:id="@+id/Ifounditbutton"/>
+            android:id="@+id/Claimbutton"/>
 
 
 

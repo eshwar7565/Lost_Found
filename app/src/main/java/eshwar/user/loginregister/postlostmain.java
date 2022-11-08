@@ -46,15 +46,14 @@ import java.util.List;
 public class postlostmain extends AppCompatActivity {
 
 
-   private ImageSwitcher imageIS;
+    private ImageSwitcher imageIS;
     private Button addimagelost,submitlost,nextinlost,previousinlost;
-    private EditText  namepostlost,phonenumberlost,locationpostlost,messagepostlost;
+    private EditText  messagepostlost;
     private static final int  PICK_IMAGES_CODE = 0 ;
     int position =0 ;
     private ArrayList <Uri> imageUris;
-    private String phonelost;
-    private String locationlost;
-    private String namelost,current_user_id;
+
+    private String current_user_id;
     private String messagelost;
     private String saveCurrentDate,saveCurrentTime ,Postlostname;
     private StorageReference PostlostReference;
@@ -73,93 +72,88 @@ public class postlostmain extends AppCompatActivity {
         PostlostReference = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
 
-
-
         authProfile = FirebaseAuth.getInstance();
         current_user_id =  authProfile.getCurrentUser().getUid();
 
 
 
-         namepostlost = findViewById(R.id.edit_text_name_postforlost);
-         phonenumberlost = findViewById(R.id.edit_text_phone_post_for_lost);
-         locationpostlost = findViewById(R.id.edit_location_post_for_lost);
-         messagepostlost = findViewById(R.id.edit_message_post_for_lost);
 
-         progressBar = findViewById(R.id.progressbarforpostinglostitems);
+        messagepostlost = findViewById(R.id.edit_message_post_for_lost);
+
+        progressBar = findViewById(R.id.progressbarforpostinglostitems);
 
 
 
-         imageIS = findViewById(R.id.imageswitcherpostlost);
+        imageIS = findViewById(R.id.imageswitcherpostlost);
 
-         nextinlost = findViewById(R.id.nextinpostlost);
-         previousinlost = findViewById(R.id.previousinppostlost);
+        nextinlost = findViewById(R.id.nextinpostlost);
+        previousinlost = findViewById(R.id.previousinppostlost);
 
 
 
-         imageUris = new ArrayList<>();
-         imageIS.setFactory(new ViewSwitcher.ViewFactory() {
-             @Override
-             public View makeView() {
-                 ImageView imageView = new ImageView(getApplicationContext());
-                 return imageView;
-             }
-         });
+        imageUris = new ArrayList<>();
+        imageIS.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(getApplicationContext());
+                return imageView;
+            }
+        });
 
 
 
 
-         submitlost = findViewById(R.id.submitlost);
-         Button buttonaddimagelost = findViewById(R.id.addimagebuttonlost);
+        submitlost = findViewById(R.id.submitlost);
+        Button buttonaddimagelost = findViewById(R.id.addimagebuttonlost);
 
 
-         previousinlost.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 if(position>0){
-                     position--;
-                     imageIS.setImageURI(imageUris.get(position));
-                 }
+        previousinlost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position>0){
+                    position--;
+                    imageIS.setImageURI(imageUris.get(position));
+                }
 
-             }
-         });
+            }
+        });
 
-         nextinlost.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 if (position<imageUris.size()-1){
-                     position++;
-                     imageIS.setImageURI(imageUris.get(position));
-                 }
+        nextinlost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (position<imageUris.size()-1){
+                    position++;
+                    imageIS.setImageURI(imageUris.get(position));
+                }
 
-             }
-         });
+            }
+        });
 
-         submitlost.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
+        submitlost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                 ValidatePostLost();
-                 progressBar.setVisibility(View.VISIBLE);
+                ValidatePostLost();
+                progressBar.setVisibility(View.VISIBLE);
 
-             }
-         });
+            }
+        });
 
 
         buttonaddimagelost.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 pickImagesintent();
+            @Override
+            public void onClick(View v) {
+                pickImagesintent();
 
 
-             }
-         });
+            }
+        });
 
     }
 
     private void ValidatePostLost() {
-        String phonelost = phonenumberlost.getText().toString();
-        String namelost = namepostlost.getText().toString();
-         locationlost = locationpostlost.getText().toString();
+
+
         messagelost =  messagepostlost.getText().toString();
         if(imageUris == null ){
             Toast.makeText(postlostmain.this, "Please select an image ", Toast.LENGTH_SHORT).show();
@@ -167,17 +161,10 @@ public class postlostmain extends AppCompatActivity {
         else if(TextUtils.isEmpty(messagelost)){
             Toast.makeText(postlostmain.this, "Please add a message", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(namelost)){
-            Toast.makeText(postlostmain.this, "Please enter your name", Toast.LENGTH_SHORT).show();
-        }
-         else if(TextUtils.isEmpty(phonelost)){
-            Toast.makeText(postlostmain.this, "Please enter your phone number", Toast.LENGTH_SHORT).show();
-        }
-       else  if(TextUtils.isEmpty(locationlost)){
-            Toast.makeText(postlostmain.this, "Please enter location ", Toast.LENGTH_SHORT).show();
-        }
-       else{
-           StoringImagetoFirebaseStorage();
+
+
+        else{
+            StoringImagetoFirebaseStorage();
         }
 
     }
@@ -193,34 +180,27 @@ public class postlostmain extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
         saveCurrentTime = currentTime.format(calForTime.getTime());
 
-        Postlostname = current_user_id+  saveCurrentDate + saveCurrentTime  ;
+        Postlostname = current_user_id+  saveCurrentDate + saveCurrentTime   ;
 
         StorageReference ImagelostFolder = FirebaseStorage.getInstance().getReference().child("LostItems");
 
-       for(int j =0 ; j < imageUris.size() ; j++){
-           Uri IndividualImage = imageUris.get(j);
-         StorageReference ImageName  = ImagelostFolder.child("Image" + IndividualImage.getLastPathSegment() + Postlostname );
-          ImageName.putFile(IndividualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-              @Override
-              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                  ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                      @Override
-                      public void onSuccess(Uri uri) {
-                          String url =  String.valueOf(uri);
-                          StoreLink(url);
+        for(int j =0 ; j < imageUris.size() ; j++){
+            Uri IndividualImage = imageUris.get(j);
+            StorageReference ImageName  = ImagelostFolder.child("Image" + IndividualImage.getLastPathSegment() + Postlostname + ".jpg " );
+            ImageName.putFile(IndividualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url =  String.valueOf(uri);
+                            StoreLink(url);
 
-                      }
-                  });
-              }
-          });
-       }
-
-
-
-
-
-
-
+                        }
+                    });
+                }
+            });
+        }
 
     }
 
@@ -248,7 +228,7 @@ public class postlostmain extends AppCompatActivity {
                     postlostMap.put("time",saveCurrentTime);
                     postlostMap.put("uid",current_user_id);
                     postlostMap.put("FullName",namelost);
-                    postlostMap.put("Location",locationlost);
+
                     postlostMap.put("PhoneNumber",phonelost);
                     postlostMap.put("Message",messagelost);
 

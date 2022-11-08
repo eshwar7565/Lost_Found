@@ -24,12 +24,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.squareup.picasso.Picasso;
-
-public class dataforlost extends AppCompatActivity {
 
 
-    private RecyclerView postlist ;
+public class dataforfound extends AppCompatActivity {
+
+
+    private RecyclerView postfoundlist ;
     private DatabaseReference postref, UserRef;
     private FirebaseAuth mAuth;
     private FirebaseRecyclerAdapter adapter;
@@ -40,15 +40,15 @@ public class dataforlost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataforlost);
-        getSupportActionBar().setTitle("LOST ITEMS DATA");
+        setContentView(R.layout.activity_dataforfound);
+        getSupportActionBar().setTitle("FOUND ITEMS DATA");
 
-        postlist = (RecyclerView) findViewById(R.id.recyclerviewforlostposts);
-        postlist.setHasFixedSize(true);
+        postfoundlist = (RecyclerView) findViewById(R.id.recyclerviewforfoundposts);
+        postfoundlist.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        postlist.setLayoutManager(linearLayoutManager);
+        postfoundlist.setLayoutManager(linearLayoutManager);
         fetch();
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,17 +59,16 @@ public class dataforlost extends AppCompatActivity {
     }
 
     private void fetch() {
-        Query query = FirebaseDatabase.getInstance().getReference().child("LostItems");
+        Query query = FirebaseDatabase.getInstance().getReference().child("FoundItems");
 
-        FirebaseRecyclerOptions<modellostposts> options =
-                new FirebaseRecyclerOptions.Builder<modellostposts>().setQuery(query, new SnapshotParser<modellostposts>() {
+        FirebaseRecyclerOptions<modelfoundposts> options =
+                new FirebaseRecyclerOptions.Builder<modelfoundposts>().setQuery(query, new SnapshotParser<modelfoundposts>() {
                     @NonNull
                     @Override
-                    public modellostposts parseSnapshot(@NonNull DataSnapshot snapshot) {
+                    public modelfoundposts parseSnapshot(@NonNull DataSnapshot snapshot) {
 
-                        return new modellostposts(snapshot.child("FullName").getValue().toString(),
+                        return new modelfoundposts(snapshot.child("FullName").getValue().toString(),
                                 snapshot.child("Message").getValue().toString(),
-
 
                                 snapshot.child("date").getValue().toString(),
                                 snapshot.child("time").getValue().toString(),
@@ -79,34 +78,37 @@ public class dataforlost extends AppCompatActivity {
                     }
                 }).build();
 
-        adapter = new FirebaseRecyclerAdapter<modellostposts, viewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<modelfoundposts, viewHolder>(options) {
 
 
             @Override
-            protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull modellostposts model) {
-
-                holder.setDatetv(modellostposts.getDate());
-                holder.setFullNametv(modellostposts.getFullName());
-                holder.setMessagetv(modellostposts.getMessage());
-                holder.setTimetv(modellostposts.getTime());
-                Glide.with(holder.checklostimageIv.getContext()).load(modellostposts.getImagelink()).into(holder.checklostimageIv);
-
-
+            protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull modelfoundposts model) {
+                holder.setDatetv(modelfoundposts.getDate());
+                holder.setFullNametv(modelfoundposts.getFullName());
+                holder.setMessagetv(modelfoundposts.getMessage());
+                holder.setTimetv(modelfoundposts.getTime());
+                Glide.with(holder.checkfoundimageIv.getContext()).load(modelfoundposts.getImagelink()).into(holder.checkfoundimageIv);
 
 
             }
+
+
+
+
+
+
 
 
             @NonNull
             @Override
             public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lostitemspostviewstyle, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.founditemsviewstyle, parent, false);
                 return new viewHolder(view) {
                 };
             }
         };
-        postlist.setAdapter(adapter);
+        postfoundlist.setAdapter(adapter);
 
 
     }
@@ -137,9 +139,9 @@ public class dataforlost extends AppCompatActivity {
 
         //views from xml file
 
-        ImageView checklostimageIv;
+        ImageView checkfoundimageIv;
         TextView FullNametv, datetv, timetv, Messagetv;
-        Button FoundButton;
+        Button Claimbutton;
 
 
         public viewHolder(@NonNull View itemView) {
@@ -147,13 +149,13 @@ public class dataforlost extends AppCompatActivity {
             //init views
 
             root = itemView.findViewById(R.id.list_root);
-            checklostimageIv = itemView.findViewById(R.id.checklostimageviewIv);
-            FullNametv = itemView.findViewById(R.id.checklostusername);
+            checkfoundimageIv = itemView.findViewById(R.id.checkfoundimageviewIv);
+            FullNametv = itemView.findViewById(R.id.checkfoundusername);
 
-            datetv = itemView.findViewById(R.id.checklostdate);
-            timetv = itemView.findViewById(R.id.checklosttime);
-            Messagetv = itemView.findViewById(R.id.check_lost_message);
-            FoundButton = itemView.findViewById(R.id.Ifounditbutton);
+            datetv = itemView.findViewById(R.id.checkfounddate);
+            timetv = itemView.findViewById(R.id.checkfoundtime);
+            Messagetv = itemView.findViewById(R.id.check_found_message);
+            Claimbutton = itemView.findViewById(R.id.Claimbutton);
 
 
         }
