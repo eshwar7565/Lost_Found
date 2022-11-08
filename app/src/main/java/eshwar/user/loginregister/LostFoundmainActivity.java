@@ -76,6 +76,15 @@ public class LostFoundmainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button mypostsbutton = findViewById(R.id.openposts);
+
+        mypostsbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( LostFoundmainActivity.this,myposts.class);
+                startActivity(intent);
+            }
+        });
 
 
 
