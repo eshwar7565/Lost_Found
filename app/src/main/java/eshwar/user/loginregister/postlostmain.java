@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -69,6 +71,9 @@ public class postlostmain extends AppCompatActivity {
         setContentView(R.layout.activity_postlostmain);
         getSupportActionBar().setTitle("POST FOR LOST");
 
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#DEF523"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
         PostlostReference = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
 
@@ -86,8 +91,7 @@ public class postlostmain extends AppCompatActivity {
 
         imageIS = findViewById(R.id.imageswitcherpostlost);
 
-        nextinlost = findViewById(R.id.nextinpostlost);
-        previousinlost = findViewById(R.id.previousinppostlost);
+
 
 
 
@@ -107,27 +111,7 @@ public class postlostmain extends AppCompatActivity {
         Button buttonaddimagelost = findViewById(R.id.addimagebuttonlost);
 
 
-        previousinlost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(position>0){
-                    position--;
-                    imageIS.setImageURI(imageUris.get(position));
-                }
 
-            }
-        });
-
-        nextinlost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (position<imageUris.size()-1){
-                    position++;
-                    imageIS.setImageURI(imageUris.get(position));
-                }
-
-            }
-        });
 
         submitlost.setOnClickListener(new View.OnClickListener() {
             @Override

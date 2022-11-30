@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +44,8 @@ public class dataforfound extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataforfound);
         getSupportActionBar().setTitle("FOUND ITEMS DATA");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#AF0032"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
         postfoundlist = (RecyclerView) findViewById(R.id.recyclerviewforfoundposts);
         postfoundlist.setHasFixedSize(true);
@@ -70,9 +74,13 @@ public class dataforfound extends AppCompatActivity {
                         return new modelfoundposts(snapshot.child("FullName").getValue().toString(),
                                 snapshot.child("Message").getValue().toString(),
 
+
                                 snapshot.child("date").getValue().toString(),
                                 snapshot.child("time").getValue().toString(),
-                                snapshot.child("Imagelink").getValue().toString());
+
+                                snapshot.child("Imagelink").getValue().toString(),
+                        snapshot.child("PhoneNumber").getValue().toString());
+
 
 
                     }
@@ -87,6 +95,7 @@ public class dataforfound extends AppCompatActivity {
                 holder.setFullNametv(modelfoundposts.getFullName());
                 holder.setMessagetv(modelfoundposts.getMessage());
                 holder.setTimetv(modelfoundposts.getTime());
+                holder.setPhonetv(modelfoundposts.getPhoneNumber());
                 Glide.with(holder.checkfoundimageIv.getContext()).load(modelfoundposts.getImagelink()).into(holder.checkfoundimageIv);
 
 
@@ -140,7 +149,7 @@ public class dataforfound extends AppCompatActivity {
         //views from xml file
 
         ImageView checkfoundimageIv;
-        TextView FullNametv, datetv, timetv, Messagetv;
+        TextView FullNametv, datetv, timetv, Messagetv,Phonetv;
         Button Claimbutton;
 
 
@@ -154,6 +163,7 @@ public class dataforfound extends AppCompatActivity {
 
             datetv = itemView.findViewById(R.id.checkfounddate);
             timetv = itemView.findViewById(R.id.checkfoundtime);
+            Phonetv = itemView.findViewById(R.id.foundpostphonetv);
             Messagetv = itemView.findViewById(R.id.check_found_message);
             Claimbutton = itemView.findViewById(R.id.Claimbutton);
 
@@ -176,11 +186,9 @@ public class dataforfound extends AppCompatActivity {
 
 
 
+
         public void setTimetv(String string){
-            timetv.setText(string);
-
-
-
-        }
+            timetv.setText(string);}
+        public void setPhonetv(String string){ Phonetv.setText(string);}
     }
 }

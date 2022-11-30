@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ public class LostFoundmainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost_foundmain);
         getSupportActionBar().setTitle("LOST & FOUND");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#00D551"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
 
         Button buttonforchangepassword = findViewById(R.id.updateorchangepassword);

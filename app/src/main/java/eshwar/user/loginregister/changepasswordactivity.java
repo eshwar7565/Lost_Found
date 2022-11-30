@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -34,6 +36,8 @@ public class changepasswordactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changepasswordactivity);
         getSupportActionBar().setTitle("CHANGE PASSWORD");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#D5A827"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
         editTextsetnewpassword = findViewById(R.id.newpasswordedittext);
         editTextoldpassword = findViewById(R.id.enteroldpassword);
@@ -158,6 +162,7 @@ public class changepasswordactivity extends AppCompatActivity {
                         finish();
                     }
                     else{
+                        Intent intent = new Intent(changepasswordactivity.this,LostFoundmainActivity.class);
                         try {
                             throw task.getException();
                         }catch(Exception e){

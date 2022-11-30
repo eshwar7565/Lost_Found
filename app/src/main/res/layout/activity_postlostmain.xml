@@ -53,6 +53,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:text="ADD IMAGE"
+            android:backgroundTint="@color/Postforlost"
             android:id="@+id/addimagebuttonlost"
             />
         <ImageSwitcher
@@ -63,36 +64,19 @@
             android:layout_below="@+id/addimagebuttonlost"
             android:id="@+id/imageswitcherpostlost"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.81"/>
 
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageswitcherpostlost"
-            android:text="PREVIOUS"
-            android:id="@+id/previousinppostlost"
-            />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/imageswitcherpostlost"
-            android:text="NEXT"
-            android:id="@+id/nextinpostlost"/>
 
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_toRightOf="@id/addimagebuttonlost"
-              android:text="(5 max)"
-              android:layout_below="@id/edit_message_post_for_lost"
-              android:layout_marginTop="45dp"
-              android:layout_marginLeft="5dp"
-              android:textStyle="bold"
-              />
+
+
 
 
         <Button
@@ -102,6 +86,7 @@
             android:layout_below="@id/addimagebuttonlost"
             android:layout_marginTop="280dp"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/Postforlost"
             android:id="@+id/submitlost"/>
         <ProgressBar
             android:layout_width="wrap_content"

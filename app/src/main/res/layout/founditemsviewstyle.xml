@@ -30,7 +30,7 @@
             >
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="79dp"
                 android:src="@drawable/ic_person"
                 android:padding="2dp"
                 android:id="@+id/checkfoundprofileimage"
@@ -93,6 +93,31 @@
 
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number ::"
+                        android:textStyle="bold"
+                        android:textColor="@color/fui_bgGitHub"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="xxxxxxxxxx"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/foundpostphonetv"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -134,11 +159,12 @@
 
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CLAIM"
             android:textStyle="bold"
-            android:layout_marginLeft="133dp"
+            android:backgroundTint="@color/Checkfound"
+
             android:id="@+id/Claimbutton"/>
 
 

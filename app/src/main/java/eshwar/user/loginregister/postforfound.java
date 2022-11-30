@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,7 +40,7 @@ import java.util.HashMap;
 public class postforfound extends AppCompatActivity {
 
     private ImageSwitcher imageIS;
-    private Button addimagefound,submitfound,nextinfound,previousinfound;
+    private Button addimagefound,submitfound;
     private EditText messagepostfound;
     private static final int  PICK_IMAGES_CODE = 0 ;
     int position =0 ;
@@ -58,6 +60,8 @@ public class postforfound extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postforfound);
         getSupportActionBar().setTitle("POST FOR FOUND");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#FAA346"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
 
 
@@ -78,8 +82,7 @@ public class postforfound extends AppCompatActivity {
 
         imageIS = findViewById(R.id.imageswitcherpostfound);
 
-        nextinfound = findViewById(R.id.nextinpostfound);
-        previousinfound = findViewById(R.id.previousinppostfound);
+
 
         imageUris = new ArrayList<>();
         imageIS.setFactory(new ViewSwitcher.ViewFactory() {
@@ -94,28 +97,7 @@ public class postforfound extends AppCompatActivity {
         Button buttonaddimagefound = findViewById(R.id.addimagebuttonfound);
 
 
-        previousinfound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(position>0){
-                    position--;
-                    imageIS.setImageURI(imageUris.get(position));
-                }
 
-            }
-        });
-
-
-        nextinfound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (position<imageUris.size()-1){
-                    position++;
-                    imageIS.setImageURI(imageUris.get(position));
-                }
-
-            }
-        });
 
         submitfound.setOnClickListener(new View.OnClickListener() {
             @Override

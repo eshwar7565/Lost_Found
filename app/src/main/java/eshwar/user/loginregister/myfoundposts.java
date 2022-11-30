@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.auth.data.model.PhoneNumber;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -82,6 +83,7 @@ public class myfoundposts extends AppCompatActivity {
 
                                 snapshot.child("date").getValue().toString(),
                                 snapshot.child("time").getValue().toString(),
+                                snapshot.child("PhoneNumber").getValue().toString(),
                                 snapshot.child("Imagelink").getValue().toString());
 
 
@@ -91,10 +93,21 @@ public class myfoundposts extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<modelmyfoundposts, viewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull modelmyfoundposts model) {
+                final DatabaseReference itemRef = getRef(position);
+                final String mykey = itemRef.getKey();
                 holder.setDatetv(modelmyfoundposts.getDate());
                 holder.setFullNametv(modelmyfoundposts.getFullName());
                 holder.setMessagetv(modelmyfoundposts.getMessage());
                 holder.setTimetv(modelmyfoundposts.getTime());
+                holder.setPhonetv(modelmyfoundposts.gePhoneNumber());
+                holder.Deletebutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        assert mykey != null;
+                        postref.child(mykey).removeValue();
+                    }
+                });
+
                 Glide.with(holder.imageIv.getContext()).load(modelmyfoundposts.getImagelink()).into(holder.imageIv);
             }
 
@@ -128,7 +141,7 @@ public class myfoundposts extends AppCompatActivity {
 
         //views from xml file
         ImageView imageIv;
-        TextView FullNametv, datetv, timetv, Messagetv;
+        TextView FullNametv, datetv, timetv, Messagetv,Phonetv;
         Button Deletebutton;
 
         public viewHolder(@NonNull View itemView) {
@@ -139,6 +152,7 @@ public class myfoundposts extends AppCompatActivity {
             FullNametv = itemView.findViewById(R.id.myfoundusername);
             datetv = itemView.findViewById(R.id.datefound);
             timetv = itemView.findViewById(R.id.timefound);
+            Phonetv = itemView.findViewById(R.id.myfoundpostphonetv);
             Messagetv = itemView.findViewById(R.id.messagefound);
             Deletebutton = itemView.findViewById(R.id.founddeletebutton);
 
@@ -154,6 +168,10 @@ public class myfoundposts extends AppCompatActivity {
         }
         public void setTimetv(String string){
             timetv.setText(string);
+        }
+
+        public void setPhonetv(String string) {Phonetv.setText(string);
+
         }
     }
 }

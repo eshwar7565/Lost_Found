@@ -16,6 +16,7 @@
             android:layout_marginTop="70dp"
             android:id="@+id/postforlost"
             android:text="POST FOR LOST"
+            android:backgroundTint="@color/MainActivity"
             />
         <Button
             android:layout_width="180dp"
@@ -24,6 +25,7 @@
             android:layout_marginTop="140dp"
             android:id="@+id/postforfound"
             android:text="POST FOR FOUND"
+            android:backgroundTint="@color/MainActivity"
             />
         <Button
             android:layout_width="180dp"
@@ -31,6 +33,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="210dp"
             android:id="@+id/checkforlost"
+            android:backgroundTint="@color/MainActivity"
             android:text="CHECK FOR LOST"/>
         <Button
             android:layout_width="180dp"
@@ -38,6 +41,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="280dp"
             android:id="@+id/checkforfound"
+            android:backgroundTint="@color/MainActivity"
+
             android:text="CHECK FOR FOUND"/>
         <Button
             android:layout_width="180dp"
@@ -46,6 +51,7 @@
             android:layout_marginTop="350dp"
             android:id="@+id/openposts"
             android:text="MY POSTS"
+            android:backgroundTint="@color/MainActivity"
 
             />
         <Button
@@ -55,6 +61,7 @@
             android:layout_marginTop="630dp"
             android:text="UPDATE PASSWORD"
             android:id="@+id/updateorchangepassword"
+            android:backgroundTint="@color/MainActivity"
             />
 
 

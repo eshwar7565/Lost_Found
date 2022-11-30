@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,9 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().setTitle("LOGIN");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#D6361C"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
         editTextLoginEmail = findViewById(R.id.texteditusername);
         editTextLoginPassword = findViewById(R.id.edittextpassword);
         progressBar = findViewById(R.id.progressbarinloginactivity);
+
 
 
 

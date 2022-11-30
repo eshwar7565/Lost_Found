@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,6 +43,9 @@ public class register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         getSupportActionBar().setTitle("REGISTER");
         progressBar = findViewById(R.id.loading);
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#33E1F9"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
         Toast.makeText(register.this, "You can register now", Toast.LENGTH_SHORT).show();
         editTextRegisterFullName = findViewById(R.id.edit_name)

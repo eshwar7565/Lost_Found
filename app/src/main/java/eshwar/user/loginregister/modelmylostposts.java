@@ -3,18 +3,19 @@ package eshwar.user.loginregister;
 public class modelmylostposts {
 
 
-    public static String FullName, Message, Imagelink, date, time, uid;
+    public static String FullName, Message, Imagelink, date, time,PhoneNumber, uid;
 
 
 
 
-    public modelmylostposts(String fullName, String message, String date, String time, String imagelink) {
+    public modelmylostposts(String fullName, String message, String date, String time, String phoneNumber ,String imagelink) {
         this.FullName = fullName;
         this.Imagelink = imagelink;
 
         this.Message = message;
         this.date = date;
         this.time = time;
+        this.PhoneNumber = phoneNumber ;
         this.uid = uid;
 
     }
@@ -22,6 +23,12 @@ public class modelmylostposts {
 
     public static String getFullName() {
         return FullName;
+    }
+
+
+
+    public static String getPhoneNumber() {
+        return PhoneNumber;
     }
 
     public void setFullName(String fullName) {

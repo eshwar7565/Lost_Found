@@ -10,141 +10,170 @@
     android:layout_height="wrap_content"
     tools:context=".myfoundposts">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/list_root"
-        >
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:padding="5dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/list_root"
             >
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_person"
-                android:padding="2dp"
-                android:id="@+id/profileimage"
-                android:layout_marginLeft="4dp"
-                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:id="@+id/myfoundusername"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="textStart"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:autoLink="all"/>
-
-
+                android:layout_marginTop="1dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="79dp"
+                    android:src="@drawable/ic_person"
+                    android:padding="2dp"
+                    android:id="@+id/profileimage"
+                    android:layout_marginLeft="4dp"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:padding="2dp">
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="has posted"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="13sp"
+                        android:text="Username"
+                        android:id="@+id/myfoundusername"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:textAlignment="textStart"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        android:id="@+id/justsimpletext"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date"
-                        android:layout_marginLeft="3dp"
                         android:textColor="@android:color/black"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:id="@+id/datefound"/>
+                        android:autoLink="all"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Time"
-                        android:layout_marginLeft="3dp"
-                        android:textColor="@android:color/black"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:id="@+id/timefound"/>
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="has posted"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:id="@+id/justsimpletext"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date"
+                            android:layout_marginLeft="3dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:id="@+id/datefound"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Time"
+                            android:layout_marginLeft="3dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:id="@+id/timefound"/>
 
 
 
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phone Number ::"
+                            android:textStyle="bold"
+                            android:textColor="@color/fui_bgGitHub"
+                            android:layout_marginLeft="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:text="xxxxxxxxxx"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/myfoundpostphonetv"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
+
             </LinearLayout>
 
-        </LinearLayout>
 
 
 
 
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Message"
-            android:id="@+id/messagefound"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:padding="3dp"
-            android:textSize="14sp"
-            android:autoLink="all"
-            android:textColor="@color/black"
-            />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/foundimageviewIv"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_margin="25dp" />
+                android:layout_height="wrap_content"
+                android:text=" Message"
+                android:id="@+id/messagefound"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:autoLink="all"
+                android:textColor="@color/black"
+                />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/foundimageviewIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_margin="25dp" />
+
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/founddeletebutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DELETE "
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DELETE "
-            android:textStyle="bold"
-            android:layout_marginLeft="133dp"
-            android:id="@+id/founddeletebutton"/>
+    </RelativeLayout>
 
-
-
-
-    </LinearLayout>
 
 
 

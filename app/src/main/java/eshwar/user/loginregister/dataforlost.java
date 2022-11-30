@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +26,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.squareup.picasso.Picasso;
+
 
 public class dataforlost extends AppCompatActivity {
 
 
-    private RecyclerView postlist ;
+    private RecyclerView postfoundlist ;
     private DatabaseReference postref, UserRef;
     private FirebaseAuth mAuth;
     private FirebaseRecyclerAdapter adapter;
@@ -40,15 +42,17 @@ public class dataforlost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataforlost);
+        setContentView(R.layout.activity_dataforfound);
         getSupportActionBar().setTitle("LOST ITEMS DATA");
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#AF0895"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
-        postlist = (RecyclerView) findViewById(R.id.recyclerviewforlostposts);
-        postlist.setHasFixedSize(true);
+        postfoundlist = (RecyclerView) findViewById(R.id.recyclerviewforfoundposts);
+        postfoundlist.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        postlist.setLayoutManager(linearLayoutManager);
+        postfoundlist.setLayoutManager(linearLayoutManager);
         fetch();
 
         mAuth = FirebaseAuth.getInstance();
@@ -73,7 +77,10 @@ public class dataforlost extends AppCompatActivity {
 
                                 snapshot.child("date").getValue().toString(),
                                 snapshot.child("time").getValue().toString(),
-                                snapshot.child("Imagelink").getValue().toString());
+
+                                snapshot.child("Imagelink").getValue().toString(),
+                                snapshot.child("PhoneNumber").getValue().toString());
+
 
 
                     }
@@ -84,17 +91,21 @@ public class dataforlost extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull modellostposts model) {
-
                 holder.setDatetv(modellostposts.getDate());
                 holder.setFullNametv(modellostposts.getFullName());
                 holder.setMessagetv(modellostposts.getMessage());
                 holder.setTimetv(modellostposts.getTime());
+                holder.setPhonetv(modellostposts.getPhoneNumber());
                 Glide.with(holder.checklostimageIv.getContext()).load(modellostposts.getImagelink()).into(holder.checklostimageIv);
 
 
-
-
             }
+
+
+
+
+
+
 
 
             @NonNull
@@ -106,7 +117,7 @@ public class dataforlost extends AppCompatActivity {
                 };
             }
         };
-        postlist.setAdapter(adapter);
+        postfoundlist.setAdapter(adapter);
 
 
     }
@@ -138,8 +149,8 @@ public class dataforlost extends AppCompatActivity {
         //views from xml file
 
         ImageView checklostimageIv;
-        TextView FullNametv, datetv, timetv, Messagetv;
-        Button FoundButton;
+        TextView FullNametv, datetv, timetv, Messagetv,Phonetv;
+        Button Claimbutton;
 
 
         public viewHolder(@NonNull View itemView) {
@@ -152,8 +163,9 @@ public class dataforlost extends AppCompatActivity {
 
             datetv = itemView.findViewById(R.id.checklostdate);
             timetv = itemView.findViewById(R.id.checklosttime);
+            Phonetv = itemView.findViewById(R.id.lostpostphonetv);
             Messagetv = itemView.findViewById(R.id.check_lost_message);
-            FoundButton = itemView.findViewById(R.id.Ifounditbutton);
+            Claimbutton = itemView.findViewById(R.id.Ifounditbutton);
 
 
         }
@@ -174,11 +186,9 @@ public class dataforlost extends AppCompatActivity {
 
 
 
+
         public void setTimetv(String string){
-            timetv.setText(string);
-
-
-
-        }
+            timetv.setText(string);}
+        public void setPhonetv(String string){ Phonetv.setText(string);}
     }
 }
