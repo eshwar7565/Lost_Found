@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class dataforlost extends AppCompatActivity {
     private FirebaseRecyclerAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
     String current_user_id;
+    String useremail;
 
 
     @Override
@@ -47,12 +49,15 @@ public class dataforlost extends AppCompatActivity {
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#AF0895"));
         getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
+
+
         postfoundlist = (RecyclerView) findViewById(R.id.recyclerviewforfoundposts);
         postfoundlist.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         postfoundlist.setLayoutManager(linearLayoutManager);
+
         fetch();
 
         mAuth = FirebaseAuth.getInstance();
@@ -71,7 +76,8 @@ public class dataforlost extends AppCompatActivity {
                     @Override
                     public modellostposts parseSnapshot(@NonNull DataSnapshot snapshot) {
 
-                        return new modellostposts(snapshot.child("FullName").getValue().toString(),
+                        return new modellostposts(
+                                snapshot.child("FullName").getValue().toString(),
                                 snapshot.child("Message").getValue().toString(),
 
 
@@ -79,7 +85,10 @@ public class dataforlost extends AppCompatActivity {
                                 snapshot.child("time").getValue().toString(),
 
                                 snapshot.child("Imagelink").getValue().toString(),
-                                snapshot.child("PhoneNumber").getValue().toString());
+
+                                snapshot.child("PhoneNumber").getValue().toString(),
+                                snapshot.child("emaillost").getValue().toString());
+
 
 
 
@@ -96,7 +105,22 @@ public class dataforlost extends AppCompatActivity {
                 holder.setMessagetv(modellostposts.getMessage());
                 holder.setTimetv(modellostposts.getTime());
                 holder.setPhonetv(modellostposts.getPhoneNumber());
+                holder.setEmailtv(modellostposts.getEmail());
                 Glide.with(holder.checklostimageIv.getContext()).load(modellostposts.getImagelink()).into(holder.checklostimageIv);
+                holder.Claimbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String emailsend = modellostposts.getEmail();
+                        String emailsubject ="Hey ! I have found your object";
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsend});
+                        intent.putExtra(Intent.EXTRA_SUBJECT, emailsubject);
+                        intent.setType("message/rfc822");
+                        startActivity(Intent.createChooser(intent,"Choose an Email Client:"));
+
+
+                    }
+                });
 
 
             }
@@ -149,7 +173,7 @@ public class dataforlost extends AppCompatActivity {
         //views from xml file
 
         ImageView checklostimageIv;
-        TextView FullNametv, datetv, timetv, Messagetv,Phonetv;
+        TextView FullNametv, datetv, timetv, Messagetv,Phonetv,Emailtv;
         Button Claimbutton;
 
 
@@ -164,6 +188,7 @@ public class dataforlost extends AppCompatActivity {
             datetv = itemView.findViewById(R.id.checklostdate);
             timetv = itemView.findViewById(R.id.checklosttime);
             Phonetv = itemView.findViewById(R.id.lostpostphonetv);
+            Emailtv = itemView.findViewById(R.id.lostpostemailtv);
             Messagetv = itemView.findViewById(R.id.check_lost_message);
             Claimbutton = itemView.findViewById(R.id.Ifounditbutton);
 
@@ -190,5 +215,10 @@ public class dataforlost extends AppCompatActivity {
         public void setTimetv(String string){
             timetv.setText(string);}
         public void setPhonetv(String string){ Phonetv.setText(string);}
+        public void setEmailtv(String string){ Emailtv.setText(string);}
     }
+
+
+
+
 }

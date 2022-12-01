@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -79,7 +80,8 @@ public class dataforfound extends AppCompatActivity {
                                 snapshot.child("time").getValue().toString(),
 
                                 snapshot.child("Imagelink").getValue().toString(),
-                        snapshot.child("PhoneNumber").getValue().toString());
+                        snapshot.child("PhoneNumber").getValue().toString(),
+                                snapshot.child("emailfound").getValue().toString());
 
 
 
@@ -96,7 +98,21 @@ public class dataforfound extends AppCompatActivity {
                 holder.setMessagetv(modelfoundposts.getMessage());
                 holder.setTimetv(modelfoundposts.getTime());
                 holder.setPhonetv(modelfoundposts.getPhoneNumber());
+                holder.setEmailtv(modelfoundposts.getEmail());
                 Glide.with(holder.checkfoundimageIv.getContext()).load(modelfoundposts.getImagelink()).into(holder.checkfoundimageIv);
+                holder.Claimbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String emailsend = modelfoundposts.getEmail();
+                        String emailsubject ="Hey ! Thanks for posting .That item is mine";
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsend});
+                        intent.putExtra(Intent.EXTRA_SUBJECT, emailsubject);
+                        intent.setType("message/rfc822");
+                        startActivity(Intent.createChooser(intent,"Choose an Email Client:"));
+
+                    }
+                });
 
 
             }
@@ -149,7 +165,7 @@ public class dataforfound extends AppCompatActivity {
         //views from xml file
 
         ImageView checkfoundimageIv;
-        TextView FullNametv, datetv, timetv, Messagetv,Phonetv;
+        TextView FullNametv, datetv, timetv, Messagetv,Phonetv,Emailtv;
         Button Claimbutton;
 
 
@@ -164,6 +180,7 @@ public class dataforfound extends AppCompatActivity {
             datetv = itemView.findViewById(R.id.checkfounddate);
             timetv = itemView.findViewById(R.id.checkfoundtime);
             Phonetv = itemView.findViewById(R.id.foundpostphonetv);
+            Emailtv = itemView.findViewById(R.id.foundpostemailtv);
             Messagetv = itemView.findViewById(R.id.check_found_message);
             Claimbutton = itemView.findViewById(R.id.Claimbutton);
 
@@ -190,5 +207,6 @@ public class dataforfound extends AppCompatActivity {
         public void setTimetv(String string){
             timetv.setText(string);}
         public void setPhonetv(String string){ Phonetv.setText(string);}
+        public void setEmailtv(String string){ Emailtv.setText(string);}
     }
 }

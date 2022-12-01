@@ -3,14 +3,14 @@ package eshwar.user.loginregister;
 public class modellostposts {
 
 
-    public static String FullName  ,Message ,Imagelink, date ,time ,PhoneNumber,uid;
+    public static String FullName  ,Message ,Imagelink, date ,time ,PhoneNumber,uid,Email;
 
 
 
 
 
 
-    public modellostposts(String fullName, String message, String date, String time, String imagelink,String phoneNumber) {
+    public modellostposts(String fullName, String message, String date, String time, String imagelink,String phoneNumber,String email) {
         this.FullName = fullName;
         this.Imagelink = imagelink;
 
@@ -20,6 +20,7 @@ public class modellostposts {
         this.time = time;
         this.PhoneNumber = phoneNumber;
         this.uid = uid;
+        this.Email = email;
 
     }
 
@@ -47,7 +48,13 @@ public class modellostposts {
     }
 
 
+    public static String getEmail() {
+        return Email;
+    }
 
+    public static void setEmail(String email) {
+        Email = email;
+    }
 
     public static String getMessage() {
         return Message;
