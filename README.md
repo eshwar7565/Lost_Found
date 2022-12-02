@@ -1,6 +1,5 @@
 # Lost_Found
-App Project
-This is a android application deveopment project.
+App Project.This is a android application deveopment project.
 This project is a one stop solution for students who reside in large campuses.
 This applications allows users to post for things they have lost or found in the campus.
 
