@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("LOST & FOUND");
 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#ECEC16"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#C66738"));
         getSupportActionBar().setBackgroundDrawable(colorDrawable);
         //open login activity
         Button buttonlogin = findViewById(R.id.button_login);

@@ -8,8 +8,8 @@
     android:background="@color/FloralWhite">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="50dp"
+        android:layout_height="850dp"
+        android:padding="0dp"
         android:layout_margin="25dp"
         >
 
@@ -61,11 +61,11 @@
 
         <ImageSwitcher
             android:id="@+id/imageswitcherpostfound"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_below="@+id/addimagebuttonfound"
             android:layout_centerInParent="true"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="105dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:text="SUBMIT"
             android:layout_below="@id/addimagebuttonfound"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="450dp"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/Postforfound"
             android:id="@+id/submitfound"/>

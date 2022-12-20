@@ -71,8 +71,7 @@ public class postlostmain extends AppCompatActivity {
         setContentView(R.layout.activity_postlostmain);
         getSupportActionBar().setTitle("POST FOR LOST");
 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#DEF523"));
-        getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
 
         PostlostReference = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
