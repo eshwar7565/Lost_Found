@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
     private static final String TAG = "Login Activity";
+    //no change
 
 
     @Override
