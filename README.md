@@ -8,3 +8,5 @@ Total project is purely written in Java with necessary comments .
 I have used Firebase Database to store data.
 
 This project is supported for android 10 or higher devices.
+
+This is given in CS230 course by @MAYANK AGARWAL PIC_AUTOMATION IIT PATNA
