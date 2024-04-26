@@ -9,4 +9,6 @@ I have used Firebase Database to store data.
 
 This project is supported for android 10 or higher devices.
 
-This is given in CS230 course by @MAYANK AGARWAL PIC_AUTOMATION IIT PATNA
+This is given in CS230 course by @MAYANK AGARWAL IIT PATNA.
+
+Video demonstration : https://drive.google.com/drive/folders/1o-hPGnOfogO9_y6sm7cfX-yZLxznwJPs?usp=sharing
